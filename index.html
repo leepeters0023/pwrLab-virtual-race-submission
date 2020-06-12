@@ -1,32 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form action="/virtual-race" method="post">
-
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-    <label for="country">Country</label>
-    <select id="country" name="country">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
-
-    <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-    <input type="submit" value="Submit">
-
-  </form>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pwrlab-virtual-race-submission-form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="varify.js"></script>
+  </head>
+  <body>
+    <form action="/virtual-race" method="post">
+      <ul>
+        <li>
+          <label for="mail">E-mail:</label>
+          <input
+            type="email"
+            id="mail"
+            name="user_email"
+            placeholder="E-mail"
+            required
+          />
+        </li>
+        <li>
+          <label for="bib-no">Bib Number (this is unique to each runner)</label>
+          <input
+            type="text"
+            id="bib-no"
+            name="bib-number"
+            placeholder="Your bib number here"
+            required
+          />
+          <!-- what are min max bib #s? -->
+        </li>
+        <li>
+          <label for="activity-date"
+            >Date of Your Run or Walk (NOT your birthday!)</label
+          >
+          <input
+            type="date"
+            id="activity-date"
+            name="trip-start"
+            value="0000-00-00"
+            min="0000-00-00"
+            max="0000-00-00"
+            required
+          />
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="distance-km"
+            name="distance-units"
+            value="km"
+            required
+          />
+          <label for="distance-km">Kilometers</label><br />
+          <input
+            type="radio"
+            id="distance-miles"
+            name="distance-units"
+            value="miles"
+            required
+          />
+          <label for="distance-miles">Miles</label><br />
+        </li>
+        <li>
+          <label for="distance">Run or walk distance:</label>
+          <input
+            type="number"
+            id="distance"
+            name="run-walk-distance"
+            placeholder="Your run or walk distance here"
+            step="0.1"
+            min="0.1"
+            max="100"
+            required
+          />
+        </li>
+        <li>
+          <label for="activity-duration-time">Run or walk time:</label>
+          <input
+            type="time"
+            id="activity-duration-time"
+            name="run-walk-time"
+            placeholder="Your run or walk time here"
+            step="1"
+            min="00:01"
+            max="24:00"
+            required
+          />
+        </li>
+        <li class="button">
+          <button type="submit">Submit</button>
+        </li>
+      </ul>
+    </form>
+  </body>
 </html>

@@ -10,7 +10,7 @@ function SubmitGoogleFormData(e) {
 
 // Grab the columns
  
-      var
+      let
         ss = SpreadsheetApp.getActiveSheet(),          // get the active sheet
         lr=ss.getLastRow(),                            // get the last row
         time = ss.getRange(lr, 1, 1, 1).getValue(),    // column 1 Timestamp
@@ -31,7 +31,7 @@ function SubmitGoogleFormData(e) {
     dur = (parseInt(Utilities.formatDate(dur, timezone, "HH")) * 60 * 60) +
           (parseInt(Utilities.formatDate(dur, timezone, "mm")) * 60) +
            parseInt(Utilities.formatDate(dur, timezone, "ss"));
-    // var parts = Utilities.formatDate(dur, timezone, "HH:mm:ss").split(':')
+    // let parts = Utilities.formatDate(dur, timezone, "HH:mm:ss").split(':')
 
 
 Logger.log(Date(date))
@@ -40,7 +40,7 @@ Logger.log(date)
    
    
 // put columns into API payload
-var payload = {
+let payload = {
     "timestamp": Date(time),
     "email": String(email),
     "activity_time": String(date),
@@ -53,12 +53,12 @@ var payload = {
 Logger.log(payload)
 
 // set up authorisation
-   //var headers = {
+   //let headers = {
    //   "Authorization" : "Basic " + Utilities.base64Encode('99uEzPjdf3U6crJHr35p:X')
    // };
 
 //build up options
-var options = {
+let options = {
       'method': 'post',
       "contentType" : "application/json",
       //'headers': headers,
@@ -67,10 +67,10 @@ var options = {
     }
 
 // set API method URL  - requestbin
-    var url = "https://pqd70u9ypa.execute-api.us-west-2.amazonaws.com/v2/distributed-events/f82a6b4c-a51b-11ea-b618-00184de9375b/activities";
+    let url = "https://pqd70u9ypa.execute-api.us-west-2.amazonaws.com/v2/distributed-events/f82a6b4c-a51b-11ea-b618-00184de9375b/activities";
 
 // make the call
-    var response = UrlFetchApp.fetch(url, options);
+    let response = UrlFetchApp.fetch(url, options);
 
 // log the response (useful for debugging )
     Logger.log(JSON.stringify(response));
@@ -79,3 +79,17 @@ var options = {
     Logger.log(error.toString());
   }
 }
+
+// sets date field max to today, inclusive 
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth()+1;
+let yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("activity-date").setAttribute("max", today);
