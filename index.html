@@ -41,11 +41,12 @@
             name="trip-start"
             value="0000-00-00"
             min="0000-00-00"
-            max="0000-00-00"
+            max="today"
             required
           />
         </li>
         <li>
+          <label for="distance-units">Distance Units</label>
           <input
             type="radio"
             id="distance-km"
@@ -79,14 +80,39 @@
         <li>
           <label for="activity-duration-time">Run or walk time:</label>
           <input
-            type="time"
-            id="activity-duration-time"
+            value="0"
+            placeholder="0"
+            type="number"
+            id="hours"
+            class="activity-duration-time"
             name="run-walk-time"
-            ng-model="endTime"
-            placeholder="Your run or walk time here"
             step="1"
-            min="00:01"
-            max="24:00"
+            min="0"
+            max="23"
+            required
+          />
+          <input
+            value="0"
+            placeholder="0"
+            type="number"
+            id="minutes"
+            class="activity-duration-time"
+            name="run-walk-time"
+            step="1"
+            min="0"
+            max="59"
+            required
+          />
+          <input
+            value="0"
+            placeholder="0"
+            type="number"
+            id="seconds"
+            class="activity-duration-time"
+            name="run-walk-time"
+            step="1"
+            min="0"
+            max="59"
             required
           />
         </li>

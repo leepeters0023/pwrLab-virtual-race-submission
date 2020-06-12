@@ -1,9 +1,7 @@
 function SubmitGoogleFormData(e) {
- 
   if (!e) {
     throw new Error("Please go the Run menu and choose Initialize");
   }
-
   try {
  
 //  this is where the API code goes
