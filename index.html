@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pwrlab-virtual-race-submission-form</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="varify.js"></script>
+    <script src="app.js"></script>
   </head>
   <body>
+    <p>Required fields marked with an asterisk<abbr class="req" title="required">*</abbr></p>
     <form action="/virtual-race" method="post">
       <ul>
         <li>
-          <label for="mail">
-            <span>E-mail:</span>
+          <label for="email">
+            <span>E-mail: *</span>
             <input
               type="email"
-              id="mail"
+              id="email"
               name="user_email"
               placeholder="E-mail"
               required
@@ -25,7 +26,7 @@
 
         <li>
           <label for="bib-no">
-            <span>Bib Number (this is unique to each runner)</span>
+            <span>Bib Number (unique to each runner)*</span>
             <input
               type="text"
               id="bib-no"
@@ -39,7 +40,7 @@
 
         <li>
           <label for="activity-date">
-            <span>Date of Your Run or Walk (NOT your birthday!)</span>
+            <span>Date of Your Run or Walk *</span>
             <input
               type="date"
               id="activity-date"
@@ -54,12 +55,14 @@
         <li>
           <fieldset>
             <label for="distance-units">
-              <span>Distance Units</span>
+              <span>Distance Units*</span>
               <label for="distance-km">
                 <span>Kilometers</span>
                 <input
+                  value='kilometers'
                   type="radio"
                   id="distance-km"
+                  class="units-radio-button"
                   name="distance-units"
                   value="km"
                   required
@@ -68,8 +71,10 @@
               <label for="distance-miles">
                 <span>Miles</span>
                 <input
+                  value='miles'
                   type="radio"
                   id="distance-miles"
+                  class="units-radio-button"
                   name="distance-units"
                   value="miles"
                   required
@@ -80,7 +85,7 @@
         </li>
         <li>
           <label for="distance">
-          <span>Run or walk distance:</span>
+          <span>Run or walk distance*</span>
           <input
             type="number"
             id="distance"
@@ -95,9 +100,9 @@
         </li>
         <li>
           <label for="activity-duration-time">
-          <span>Run or walk time</span>
+          <span>Run or walk time*</span>
           <fieldset>
-          <label for="activity-duration-time">Hrs:</label>
+          <label for="activity-duration-time">Hrs:(<abbr class="req" title="required">*</abbr>)</label>
           <input
             value="0"
             placeholder="0"
@@ -110,7 +115,7 @@
             max="23"
             required
           />
-          <label for="activity-duration-time">Minutes:</label>
+          <label for="activity-duration-time">Minutes:*</label>
           <input
             value="0"
             placeholder="0"
@@ -123,7 +128,7 @@
             max="59"
             required
           />
-          <label for="activity-duration-time">Seconds:</label>
+          <label for="activity-duration-time">Seconds:*</label>
           <input
             value="0"
             placeholder="0"

@@ -1,16 +1,10 @@
-#activity-duration-time::-webkit-datetime-edit-ampm-field {
-  display: none;
+input:invalid {
+  border: 2px dashed red;
 }
-input[type=time]::-webkit-clear-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0; 
+input:invalid:required {
+  border: 2px solid black;
+  background-image: linear-gradient(to right, pink, lightgreen);
 }
- input[type=number]::-webkit-inner-spin-button,
- input[type=number]::-webkit-outer-spin-button {
- -webkit-appearance: none;
- -moz-appearance: none;
-  appearance: none;
-  margin: 0; 
- }
+input:valid {
+  border: 2px solid black;
+}
