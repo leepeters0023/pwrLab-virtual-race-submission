@@ -21,3 +21,11 @@ let hours = document.getElementById('hours').value
 let minutes = document.getElementById('minutes').value
 let seconds = document.getElementById('seconds').value
 
+let completeForm = {
+  email : email,
+  bibNum : bibNum,
+  activityDate: activityDate,
+  distanceUnits: distanceUnits,
+  distance : distance
+}
+console.log(completeForm)
