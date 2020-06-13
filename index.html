@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pwrlab-virtual-race-submission-form</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="app.js"></script>
   </head>
   <body>
     <p>Required fields marked with an asterisk<abbr class="req" title="required">*</abbr></p>
-    <form method="post">
+    <form> <!-- also, where to send data? method="post" -->
       <ul>
         <li>
           <label for="email">
@@ -23,7 +22,6 @@
             />
           </label>
         </li>
-
         <li>
           <label for="bib-no">
             <span>Bib Number (unique to each runner)*</span>
@@ -37,7 +35,6 @@
             <!-- what are min max bib #s? -->
           </label>
         </li>
-
         <li>
           <label for="activity-date">
             <span>Date of Your Run or Walk *</span>
@@ -145,9 +142,11 @@
         </label>
         </li>
         <li class="button">
-          <button type="submit">Submit</button>
+          <button id="submit-button" type="button">Submit</button>
+          <!-- change type back to submit after testing -->
         </li>
       </ul>
     </form>
   </body>
+  <script src="app.js"></script>
 </html>

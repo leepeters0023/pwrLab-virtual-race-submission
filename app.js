@@ -12,20 +12,32 @@ if (mm < 10) {
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("activity-date").setAttribute("max", today);
 
-let email = document.getElementById('email').value
-let bibNum = document.getElementById('bib-no').value
-let activityDate= document.getElementById('activity-date').value
-let distanceUnits= document.getElementsByClassName('units-radio-button').value
+let email = document.getElementById('email')
+let bibNum = document.getElementById('bib-no')
+let activityDate= document.getElementById('activity-date')
+let distanceUnits= document.getElementsByClassName('units-radio-button') // returns value of selected radio button
 let distance = document.getElementById('distance').value
-let hours = document.getElementById('hours').value
-let minutes = document.getElementById('minutes').value
-let seconds = document.getElementById('seconds').value
+let hours = document.getElementById('hours')
+let minutes = document.getElementById('minutes')
+let seconds = document.getElementById('seconds')
+let submitButton = document.getElementById('submit-button')
+let completeForm = {}
 
-let completeForm = {
-  email : email,
-  bibNum : bibNum,
-  activityDate: activityDate,
-  distanceUnits: distanceUnits,
-  distance : distance
+submitButton.addEventListener('click', () => {
+  completeForm.email = email.value.trim();
+  completeForm.bibNum = bibNum.value.trim();
+  completeForm.activityDate = activityDate.value;
+  completeForm.distance = getMeters();
+  console.log(completeForm)
+})
+
+function getMeters(distanceUnits, distance) {
+  if (distanceUnits === 'km') {
+    return distance * 1000;
+  } else {
+    return distance * 1609.34
+  }
 }
-console.log(completeForm)
+function getActivtyTime (hours, minuts, seconds) {
+
+}
