@@ -15,8 +15,8 @@ document.getElementById("activity-date").setAttribute("max", today);
 // assign vars from input fields
 let email = document.getElementById('email')
 let bibNum = document.getElementById('bib-no')
-let activityDate= document.getElementById('activity-date')
-let distanceUnits= document.getElementsByName('distance-units')
+let activityDate = document.getElementById('activity-date')
+let distanceUnits = document.getElementsByName('distance-units')
 let distance = document.getElementById('distance-input')
 let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
@@ -25,7 +25,7 @@ let submitButton = document.getElementById('submit-button')
 let completeForm = {}
 
 submitButton.addEventListener('click', () => {
-  submitButton.disabled = true; 
+  submitButton.disabled = true;
   completeForm.email = email.value.trim();
   completeForm.bibNum = parseFloat(bibNum.value.trim());
   completeForm.activityDate = activityDate.value;
@@ -36,11 +36,14 @@ submitButton.addEventListener('click', () => {
     }
   }
   completeForm.distance = getMeters(distanceUnits, distance);
+  completeForm.hours = parseFloat(hours.value.trim())
+  completeForm.minutes = parseFloat(minutes.value.trim())
+  completeForm.seconds = parseFloat(seconds.value.trim())
 })
 
 function getMeters(distanceUnits, distance) {
-    distance = distance.value.trim()
-    distance = parseFloat(distance)
+  distance = distance.value.trim()
+  distance = parseFloat(distance)
   if (distanceUnits === 'kilometers') {
     return distance * 1000
   } else {
@@ -48,7 +51,38 @@ function getMeters(distanceUnits, distance) {
   }
 }
 
-
-function getActivtyTime (hours, minuts, seconds) {
-
+let modal = document.getElementById("myModal");
+// Get the button that opens the modal
+let btn = document.getElementById("submit-button");
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
 }
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+/*
+function get_action(form) {
+  let v = grecaptcha.getResponse();
+  if (v.length == 0) {
+    document.getElementById('captcha').innerHTML = "You can't leave Captcha Code empty";
+    return false;
+  }
+  else {
+    document.getElementById('captcha').innerHTML = "Captcha completed";
+    return true;
+  }
+}
+function getActivtyTime(hours, minuts, seconds) {
+
+} */

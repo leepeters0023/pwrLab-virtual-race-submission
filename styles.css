@@ -107,3 +107,54 @@ fieldset {
   cursor: pointer;
   opacity: .8;
 }
+#submit-button-final {
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgb(13, 156, 131);
+  border: 1px solid transparent;
+  padding: .375rem 1rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  border-radius: .25rem;
+}
+#submit-button-final:hover {
+cursor: pointer;
+opacity: .8;
+}
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
