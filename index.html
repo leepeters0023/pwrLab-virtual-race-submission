@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pwrlab-virtual-race-submission-form</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
   </head>
   <body>
-    <p>Required fields marked with an asterisk<abbr class="req" title="required">*</abbr></p>
+    <p>Required fields marked with an asterisk * </p>
     <form> <!-- also, where to send data? method="post" -->
-      <ul>
         <li>
           <label for="email">
             <span>E-mail: *</span>
@@ -17,7 +18,7 @@
               type="email"
               id="email"
               name="user_email"
-              placeholder="E-mail"
+              placeholder=" E-Mail"
               required
             />
           </label>
@@ -26,10 +27,10 @@
           <label for="bib-no">
             <span>Bib Number (unique to each runner)*</span>
             <input
-              type="text"
+              type="number"
               id="bib-no"
               name="bib-number"
-              placeholder="Your bib number here"
+              placeholder=" 123"
               required
             />
             <!-- what are min max bib #s? -->
@@ -42,7 +43,8 @@
               type="date"
               id="activity-date"
               name="trip-start"
-              value="0000-00-00"
+              value="today"
+              placeholder="today"
               min="0000-00-00"
               max="today"
               required
@@ -50,9 +52,10 @@
           </label>
         </li>
         <li>
-          <fieldset>
             <label for="distance-units">
               <span>Distance Units*</span>
+              <fieldset>
+              <div class='horizontal-input'>
               <label for="distance-km">
                 <span>Kilometers</span>
                 <input
@@ -78,16 +81,17 @@
                 />
               </label>
             </label>
+            </div>
           </fieldset>
         </li>
         <li>
-          <label for="distance">
+          <label for="distance-input">
           <span>Run or walk distance*</span>
           <input
             type="number"
-            id="distance"
+            id="distance-input"
             name="run-walk-distance"
-            placeholder="Your run or walk distance here"
+            placeholder=" 0.0"
             step="0.1"
             min="0.1"
             max="100"
@@ -97,9 +101,10 @@
         </li>
         <li>
           <label for="activity-duration-time">
-          <span>Run or walk time*</span>
+          <span>Run or walk time</span>
           <fieldset>
-          <label for="activity-duration-time">Hrs:(<abbr class="req" title="required">*</abbr>)</label>
+          <div class='horizontal-input'>
+          <label for="activity-duration-time">Hrs: *</label>
           <input
             value="0"
             placeholder="0"
@@ -138,6 +143,7 @@
             max="59"
             required
           />
+        </div>
         </fieldset>
         </label>
         </li>
@@ -145,7 +151,6 @@
           <button id="submit-button" type="button">Submit</button>
           <!-- change type back to submit after testing -->
         </li>
-      </ul>
     </form>
   </body>
   <script src="app.js"></script>

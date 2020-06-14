@@ -1,10 +1,103 @@
-input:invalid {
-  border: 2px dashed red;
-}
 input:invalid:required {
   border: 2px solid black;
-  background-image: linear-gradient(to right, pink, lightgreen);
 }
 input:valid {
-  border: 2px solid black;
+  border: 2px solid green;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+p {
+  font-size: 1.75rem;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+li {
+  font-family: 'Source Sans Pro', sans-serif;
+  list-style: none;
+  margin: .5rem;
+}
+li.button {
+  align-content: center;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label[for='distance-km']{
+  margin-right: .5rem;
+}
+label[for='distance-miles']{
+  margin-left: .5rem;
+}
+span {
+  font-size: 1.25rem;
+  text-justify: center;
+  text-align: center;
+}
+input {
+  -webkit-appearance: none; 
+  appearance: none;
+  border-radius: .25rem;
+}
+input:hover {
+  cursor: pointer;
+}
+input[type='number'] {
+  width: 4rem;
+  height: 1.75rem;
+  margin: .5rem;
+  text-align: center;
+}
+input[type='email'] {
+  width: 12rem;
+  height: 1.75rem;
+  margin: .5rem;
+}
+input[type='date'] {
+  width: 10rem;
+  height: 1.75rem;
+  margin: 1rem;
+  text-align: center;
+}
+input[type='radio'] {
+  width: 1rem;
+  height: 1rem;
+  background-color: 
+}
+input[type='radio']:checked {
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(13, 156, 131);
+}
+input[class='activity-duration-time'] {
+  margin: 1rem .1rem 1rem .1rem;
+  width: 2.5rem;
+}
+fieldset {
+  -webkit-appearance: none; 
+  appearance: none;
+  border: none;
+}
+.horizontal-input {
+  display: flex;
+  flex-direction: row;
+}
+#submit-button {
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(13, 156, 131);
+    border: 1px solid transparent;
+    padding: .375rem 1rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    border-radius: .25rem;
+}
+#submit-button:hover {
+  cursor: pointer;
+  opacity: .8;
 }
