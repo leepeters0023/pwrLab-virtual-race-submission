@@ -11,6 +11,7 @@ form {
 }
 h4 {
   font-size: 1rem;
+  margin: 0;
   text-align: center;
 }
 p {
@@ -64,7 +65,7 @@ input[type='date'] {
   font-size: 1rem;
   width: 10rem;
   height: 1.75rem;
-  margin: 1rem;
+  margin: .5rem;
   text-align: center;
 }
 #distance-units {

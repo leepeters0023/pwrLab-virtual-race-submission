@@ -11,9 +11,9 @@ if (mm < 10) {
 }
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("activity-date").setAttribute("max", today);
-
-// assign vars from input fields
+// assign remaining vars from input fields
 let email = document.getElementById('email')
+// let emailToTest = String(email.value.trim().toLowerCase());
 let bibNum = document.getElementById('bib-no')
 let activityDate = document.getElementById('activity-date')
 let distanceUnits = document.getElementById('distance-units')
@@ -21,38 +21,23 @@ let distance = document.getElementById('distance-input')
 let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
 let seconds = document.getElementById('seconds')
-let submitButton = document.getElementById('submit-button')
+let confirmButton = document.getElementById('submit-button-final')
 let completeForm = {}
-
+// checks if activity time greater than 10 hrs 
 hours.addEventListener('input', () => {
   if(hours.value > 10) {
     window.confirm(`Are you sure you meant to enter ${hours.value} hours for your run time?`)
   }
 })
-submitButton.addEventListener('click', () => {
-  // document.addEventListener('submit', e => {
-  // Store reference to form to make later code easier to read
-  // const form = e.target;
-  // Prevent the default form submit
-  // e.preventDefault();
-  // set up the fetch, busy state, error state
-  // });
-  
-  submitButton.disabled = true;
-  completeForm.email = email.value.trim();
-  completeForm.bibNum = parseFloat(bibNum.value.trim());
-  completeForm.activityDate = activityDate.value;
-  for (let i = 0, length = distanceUnits.length; i < length; i++) {
-    if (distanceUnits[i].checked) {
-      distanceUnits = distanceUnits[i].value;
-      break;
+// checks if email is valid, broken right now 
+/*
+ function validateEmail(emailToTest) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(emailToTest)) {
+    } else {
+      alert("Please enter a valid e-mail address")
     }
-  }
-  completeForm.distance = getMeters(distanceUnits, distance);
-  completeForm.time = getTotalSeconds(hours, minutes, seconds)
-  alert(JSON.stringify(completeForm))
-})
-
+ } */
 // convert to meters
 function getMeters(distanceUnits, distance) {
   distance = distance.value.trim()
@@ -71,8 +56,7 @@ function getTotalSeconds(hours, minutes, seconds) {
     parseInt(seconds.value.trim())
   return totalSeconds
 }
-
-/*  - - - to do - - -
+// - - - - related to confirmation modal - - - - // 
 let modal = document.getElementById("myModal");
 // Get the button that opens the modal
 let btn = document.getElementById("submit-button");
@@ -80,13 +64,18 @@ let btn = document.getElementById("submit-button");
 let span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
+  if (email.value && bibNum.value && activityDate.value && distance.value && distanceUnits.value && hours.value && minutes.value && seconds.value) {
   modal.style.display = "block";
-  alert()
+  let modalText = document.getElementById('user-info-modal')
+  modalText.innerHTML = 
+    `<h4>E-mail: ${email.value}<br></br>Bib number: ${bibNum.value}<br></br>Activity Date: ${activityDate.value}<br></br>Distance: ${distance.value}<br></br>Units: ${distanceUnits.value}<br></br>Total activity time: ${hours.value} Hrs, ${minutes.value} Minutes, ${seconds.value} Seconds</h4>`
+  } else {
+    alert("Please complete all required fields")
+  }
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-  
 }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -94,8 +83,25 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+confirmButton.addEventListener('click', e => {
+  if (!e) {
+    throw new Error("Please go the Run menu and choose Initialize")
+  }
+  completeForm.email = email.value.trim();
+  completeForm.bibNum = parseFloat(bibNum.value.trim());
+  completeForm.activityDate = activityDate.value;
+  for (let i = 0, length = distanceUnits.length; i < length; i++) {
+    if (distanceUnits[i].checked) {
+      distanceUnits = distanceUnits[i].value;
+      break;
+    }
+  }
+  completeForm.distance = getMeters(distanceUnits, distance);
+  completeForm.time = getTotalSeconds(hours, minutes, seconds)
+  alert(JSON.stringify(completeForm, "This is what we'll send to S3"))
+})
 /*
-function get_action(form) {
+function get_action(xxx) {
   let v = grecaptcha.getResponse();
   if (v.length == 0) {
     document.getElementById('captcha').innerHTML = "You can't leave Captcha Code empty";
@@ -108,5 +114,4 @@ function get_action(form) {
   }
 }
 function getActivtyTime(hours, minuts, seconds) {
-
 } */ 

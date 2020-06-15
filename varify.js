@@ -4,9 +4,7 @@ function SubmitGoogleFormData(e) {
   }
   try {
     //  this is where the API code goes
-
     // Grab the columns
-
     let ss = SpreadsheetApp.getActiveSheet(), // get the active sheet
       lr = ss.getLastRow(), // get the last row
       time = ss.getRange(lr, 1, 1, 1).getValue(), // column 1 Timestamp
@@ -17,13 +15,11 @@ function SubmitGoogleFormData(e) {
       dur = ss.getRange(lr, 6, 1, 1).getValue(), // column 6 Duration (optional)
       bib = ss.getRange(lr, 7, 1, 1).getValue(), // column 7 Bib Number
       timezone = SpreadsheetApp.getActive().getSpreadsheetTimeZone();
-
     if (unit == "Kilometers") {
       dist = dist * 1000;
     } else {
       dist = dist * 1609.344;
     }
-
     dur =
       parseInt(Utilities.formatDate(dur, timezone, "HH")) * 60 * 60 +
       parseInt(Utilities.formatDate(dur, timezone, "mm")) * 60 +
@@ -46,7 +42,7 @@ function SubmitGoogleFormData(e) {
     };
 
     Logger.log(payload);
-    
+
     // set up authorisation
     //let headers = {
     //   "Authorization" : "Basic " + Utilities.base64Encode('99uEzPjdf3U6crJHr35p:X')
