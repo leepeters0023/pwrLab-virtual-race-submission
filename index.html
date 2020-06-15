@@ -9,7 +9,7 @@
   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
   </head>
   <body>
-    <p>Required fields marked with an asterisk * </p>
+    <h4>Required fields marked with an asterisk * </h4>
     <form> <!-- action="send this data somewhere" method="post" -->
         <li>
           <label for="email">
@@ -30,6 +30,8 @@
               type="number"
               id="bib-no"
               name="bib-number"
+              min="555"
+              max="9999"
               placeholder="123"
               required
             />
@@ -39,50 +41,18 @@
         <li>
           <label for="activity-date">
             <span>Date of Your Run or Walk *</span>
+            <h4>Entries prior to registration date will not be accepted</h4>
             <input
               type="date"
               id="activity-date"
               name="trip-start"
               value="today"
               placeholder="today"
-              min="0000-00-00"
+              min="2020-06-07"
               max="today"
               required
             />
           </label>
-        </li>
-        <li>
-            <label for="distance-units">
-              <span>Distance Units*</span>
-              <fieldset>
-              <div class='horizontal-input'>
-              <label for="distance-km">
-                Kilometers
-                <input
-                  value='kilometers'
-                  type="radio"
-                  id="distance-km"
-                  class="units-radio-button"
-                  name="distance-units"
-                  value="km"
-                  required
-                />
-              </label>
-              <label for="distance-miles">
-                Miles
-                <input
-                  value='miles'
-                  type="radio"
-                  id="distance-miles"
-                  class="units-radio-button"
-                  name="distance-units"
-                  value="miles"
-                  required
-                />
-              </label>
-            </label>
-            </div>
-          </fieldset>
         </li>
         <li>
           <label for="distance-input">
@@ -100,13 +70,20 @@
         </label>
         </li>
         <li>
+            <label for="distance-units">
+              <span>Distance Units*</span>
+              <select id='distance-units' name='distance-units'>
+                <option id='distance-units-content' value='miles' selected>Miles</option>
+                <option id='distance-units-content' value='kilometers'>Kilometers</option>
+              </select>
+        </li>
+        <li>
           <label for="activity-duration-time">
           <span>Run or walk time</span>
           <fieldset>
           <div class='horizontal-input'>
           <label for="activity-duration-time">Hrs: *
           <input
-            value="0"
             placeholder="0"
             type="number"
             id="hours"
@@ -120,7 +97,6 @@
         </label>
           <label for="activity-duration-time">Minutes:*
           <input
-            value="0"
             placeholder="0"
             type="number"
             id="minutes"
@@ -134,7 +110,6 @@
         </label>
           <label for="activity-duration-time">Seconds:*
           <input
-            value="0"
             placeholder="0"
             type="number"
             id="seconds"

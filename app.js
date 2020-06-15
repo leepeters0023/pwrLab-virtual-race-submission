@@ -16,7 +16,7 @@ document.getElementById("activity-date").setAttribute("max", today);
 let email = document.getElementById('email')
 let bibNum = document.getElementById('bib-no')
 let activityDate = document.getElementById('activity-date')
-let distanceUnits = document.getElementsByName('distance-units')
+let distanceUnits = document.getElementById('distance-units')
 let distance = document.getElementById('distance-input')
 let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
@@ -24,6 +24,11 @@ let seconds = document.getElementById('seconds')
 let submitButton = document.getElementById('submit-button')
 let completeForm = {}
 
+hours.addEventListener('input', () => {
+  if(hours.value > 10) {
+    window.confirm(`Are you sure you meant to enter ${hours.value} hours for your run time?`)
+  }
+})
 submitButton.addEventListener('click', () => {
   // document.addEventListener('submit', e => {
   // Store reference to form to make later code easier to read
@@ -32,6 +37,7 @@ submitButton.addEventListener('click', () => {
   // e.preventDefault();
   // set up the fetch, busy state, error state
   // });
+  
   submitButton.disabled = true;
   completeForm.email = email.value.trim();
   completeForm.bibNum = parseFloat(bibNum.value.trim());
@@ -43,9 +49,7 @@ submitButton.addEventListener('click', () => {
     }
   }
   completeForm.distance = getMeters(distanceUnits, distance);
-  completeForm.hours = parseFloat(hours.value.trim())
-  completeForm.minutes = parseFloat(minutes.value.trim())
-  completeForm.seconds = parseFloat(seconds.value.trim())
+  completeForm.time = getTotalSeconds(hours, minutes, seconds)
   alert(JSON.stringify(completeForm))
 })
 
@@ -58,6 +62,14 @@ function getMeters(distanceUnits, distance) {
   } else {
     return distance * 1609.34
   }
+}
+// return total seconds 
+function getTotalSeconds(hours, minutes, seconds) {
+  let totalSeconds = 
+    parseInt(hours.value.trim()) * 60 * 60 +
+    parseInt(minutes.value.trim()) * 60 +
+    parseInt(seconds.value.trim())
+  return totalSeconds
 }
 
 /*  - - - to do - - -
