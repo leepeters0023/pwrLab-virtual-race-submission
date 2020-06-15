@@ -46,7 +46,7 @@ function SubmitGoogleFormData(e) {
     };
 
     Logger.log(payload);
-
+    
     // set up authorisation
     //let headers = {
     //   "Authorization" : "Basic " + Utilities.base64Encode('99uEzPjdf3U6crJHr35p:X')

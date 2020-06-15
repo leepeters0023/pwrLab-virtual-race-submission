@@ -10,7 +10,7 @@
   </head>
   <body>
     <p>Required fields marked with an asterisk * </p>
-    <form> <!-- also, where to send data? method="post" -->
+    <form> <!-- action="send this data somewhere" method="post" -->
         <li>
           <label for="email">
             <span>E-mail: *</span>
@@ -155,16 +155,15 @@
           <!-- change type back to submit after testing -->
         </li>
     </form>
-<!-- The Modal -->
-     <div id="myModal" class="modal">
-     <!-- Modal content -->
+     <!-- Modal content
+      <div id="myModal" class="modal">
        <div class="modal-content">
          <span class="close">&times;</span>
          <p>Is this information correct?</p>
-         <div id="user-info-modal">{{email}} {{bibNum}}</div>
+         <p id="user-info-modal"></p>
          <button id="submit-button-final" type="button">Confirm</button>
       </div>
-     </div>
+     </div>  -->
   </body>
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="app.js"></script>

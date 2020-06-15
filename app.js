@@ -25,6 +25,13 @@ let submitButton = document.getElementById('submit-button')
 let completeForm = {}
 
 submitButton.addEventListener('click', () => {
+  // document.addEventListener('submit', e => {
+  // Store reference to form to make later code easier to read
+  // const form = e.target;
+  // Prevent the default form submit
+  // e.preventDefault();
+  // set up the fetch, busy state, error state
+  // });
   submitButton.disabled = true;
   completeForm.email = email.value.trim();
   completeForm.bibNum = parseFloat(bibNum.value.trim());
@@ -39,8 +46,10 @@ submitButton.addEventListener('click', () => {
   completeForm.hours = parseFloat(hours.value.trim())
   completeForm.minutes = parseFloat(minutes.value.trim())
   completeForm.seconds = parseFloat(seconds.value.trim())
+  alert(JSON.stringify(completeForm))
 })
 
+// convert to meters
 function getMeters(distanceUnits, distance) {
   distance = distance.value.trim()
   distance = parseFloat(distance)
@@ -51,6 +60,7 @@ function getMeters(distanceUnits, distance) {
   }
 }
 
+/*  - - - to do - - -
 let modal = document.getElementById("myModal");
 // Get the button that opens the modal
 let btn = document.getElementById("submit-button");
@@ -59,10 +69,12 @@ let span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
+  alert()
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  
 }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -70,7 +82,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
 /*
 function get_action(form) {
   let v = grecaptcha.getResponse();
@@ -80,9 +91,10 @@ function get_action(form) {
   }
   else {
     document.getElementById('captcha').innerHTML = "Captcha completed";
-    return true;
+    return true; 
+    // find way other than innerHTML to set? 
   }
 }
 function getActivtyTime(hours, minuts, seconds) {
 
-} */
+} */ 
