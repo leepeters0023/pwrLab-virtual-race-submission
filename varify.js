@@ -66,7 +66,10 @@ function SubmitGoogleFormData(e) {
 
     // log the response (useful for debugging )
     Logger.log(JSON.stringify(response));
-  } catch (error) {
+    
+  } 
+  
+  catch (error) {
     Logger.log(error.toString());
   }
 }

@@ -11,6 +11,7 @@ if (mm < 10) {
 }
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("activity-date").setAttribute("max", today);
+
 // assign remaining vars from input fields
 let email = document.getElementById('email')
 // let emailToTest = String(email.value.trim().toLowerCase());
@@ -30,24 +31,26 @@ hours.addEventListener('input', () => {
   }
 })
 // checks if email is valid, broken right now 
-/*
- function validateEmail(emailToTest) {
+/* function validateEmail(emailToTest) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(emailToTest)) {
     } else {
       alert("Please enter a valid e-mail address")
     }
  } */
+
 // convert to meters
 function getMeters(distanceUnits, distance) {
   distance = distance.value.trim()
   distance = parseFloat(distance)
+  distanceUnits = distanceUnits.value
   if (distanceUnits === 'kilometers') {
     return distance * 1000
   } else {
     return distance * 1609.34
   }
 }
+
 // return total seconds 
 function getTotalSeconds(hours, minutes, seconds) {
   let totalSeconds = 
@@ -63,7 +66,7 @@ let btn = document.getElementById("submit-button");
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+btn.onclick = () => {
   if (email.value && bibNum.value && activityDate.value && distance.value && distanceUnits.value && hours.value && minutes.value && seconds.value) {
   modal.style.display = "block";
   let modalText = document.getElementById('user-info-modal')
@@ -74,7 +77,7 @@ btn.onclick = function() {
   }
 }
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = () => {
   modal.style.display = "none";
 }
 // When the user clicks anywhere outside of the modal, close it
@@ -83,22 +86,14 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+// create JSON and send to S3
 confirmButton.addEventListener('click', e => {
-  if (!e) {
-    throw new Error("Please go the Run menu and choose Initialize")
-  }
   completeForm.email = email.value.trim();
   completeForm.bibNum = parseFloat(bibNum.value.trim());
   completeForm.activityDate = activityDate.value;
-  for (let i = 0, length = distanceUnits.length; i < length; i++) {
-    if (distanceUnits[i].checked) {
-      distanceUnits = distanceUnits[i].value;
-      break;
-    }
-  }
   completeForm.distance = getMeters(distanceUnits, distance);
   completeForm.time = getTotalSeconds(hours, minutes, seconds)
-  alert(JSON.stringify(completeForm, "This is what we'll send to S3"))
+  alert(JSON.stringify(completeForm))
 })
 /*
 function get_action(xxx) {
