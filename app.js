@@ -14,6 +14,7 @@ document.getElementById("activity-date").setAttribute("max", today);
 
 // assign remaining vars from input fields
 let email = document.getElementById('email')
+let emailVarify = document.getElementById('email-varify')
 // let emailToTest = String(email.value.trim().toLowerCase());
 let bibNum = document.getElementById('bib-no')
 let activityDate = document.getElementById('activity-date')
@@ -28,6 +29,11 @@ let completeForm = {}
 hours.addEventListener('input', () => {
   if(hours.value > 10) {
     window.confirm(`Are you sure you meant to enter ${hours.value} hours for your run time?`)
+  }
+})
+emailVarify.addEventListener('blur', () => {
+  if(email.value.trim() !== emailVarify.value.trim()) {
+    alert('Please make sure e-mail addresses match')
   }
 })
 // checks if email is valid, broken right now 
