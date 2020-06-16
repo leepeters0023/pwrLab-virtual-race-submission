@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 input:invalid:required {
   border: 2px solid black;
 }
@@ -9,10 +13,16 @@ form {
   flex-direction: column;
   align-items: center;
 }
+h2 {
+  color: white;
+  text-align: center;
+  text-justify: initial;
+  font-family: 'Source Sans Pro', sans-serif;
+}
 h4 {
-  font-size: 1rem;
   margin: 0;
   text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 p {
   font-size: 1.75rem;
@@ -23,6 +33,13 @@ li {
   font-family: 'Source Sans Pro', sans-serif;
   list-style: none;
   margin: .5rem;
+}
+#form-title {
+  background-color: rgb(13, 156, 131);
+  height: auto;
+  width: 100vw;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 li.button {
   align-content: center;

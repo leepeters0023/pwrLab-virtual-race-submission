@@ -9,7 +9,9 @@
   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
   </head>
   <body>
-    <h4>Required fields marked with an asterisk * </h4>
+    <div id='form-title'>
+      <h2>Use this form to submit entries on the honor system for California Coast 500.</h2>
+    </div>
     <form> <!-- action="send this data somewhere" method="post" -->
         <li>
           <label for="email">
@@ -48,7 +50,7 @@
               name="trip-start"
               value="today"
               placeholder="today"
-              min="2020-06-07"
+              min="2020-06-08"
               max="today"
               required
             />
@@ -128,6 +130,7 @@
         <li class="button">
           <button id="submit-button" type="button">Submit</button>
         </li>
+        <h4>All fields are required for a valid submission* </h4>
     </form>
       <div id="myModal" class="modal">
        <div class="modal-content">
