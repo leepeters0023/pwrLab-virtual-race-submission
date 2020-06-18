@@ -22,11 +22,11 @@ let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
 let seconds = document.getElementById('seconds')
 let confirmButton = document.getElementById('submit-button-final')
-//let response = UrlFetchApp.fetch(url, options)
+let response = UrlFetchApp.fetch(url, options)
 let url =
 "https://pqd70u9ypa.execute-api.us-west-2.amazonaws.com/v2/distributed-events/f82a6b4c-a51b-11ea-b618-00184de9375b/activities"
 let completeForm = {
-  //timestamp: Date(time)
+  timestamp: Date(time)
 }
 let options = {
   method: "post",
@@ -99,9 +99,9 @@ confirmButton.addEventListener('click', e => {
   completeForm.distance = getMeters(distanceUnits, distance);
   completeForm.time = getTotalSeconds(hours, minutes, seconds)
   alert(JSON.stringify(completeForm))
-  //sendData();
+  sendData();
 })
-/*
+
 function sendData(e) {
   if (!e) {
     throw new Error("Please go the Run menu and choose Initialize")
@@ -114,4 +114,3 @@ function sendData(e) {
     Logger.log(error.toString());
   }
 } 
-*/
