@@ -24,7 +24,18 @@ let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
 let seconds = document.getElementById('seconds')
 let confirmButton = document.getElementById('submit-button-final')
-let completeForm = {}
+let response = UrlFetchApp.fetch(url, options)
+let url =
+"https://pqd70u9ypa.execute-api.us-west-2.amazonaws.com/v2/distributed-events/f82a6b4c-a51b-11ea-b618-00184de9375b/activities"
+let completeForm = {
+  timestamp: Date(time)
+}
+let options = {
+  method: "post",
+  contentType: "application/json",
+  payload: JSON.stringify(completeForm),
+  muteHttpExceptions: false,
+};
 // checks if activity time greater than 10 hrs 
 hours.addEventListener('input', () => {
   if(hours.value > 10) {
@@ -94,13 +105,28 @@ window.onclick = function(event) {
 }
 // create JSON and send to S3
 confirmButton.addEventListener('click', e => {
-  completeForm.email = email.value.trim();
+  completeForm.email = String(email.value.trim();
   completeForm.bibNum = parseFloat(bibNum.value.trim());
   completeForm.activityDate = activityDate.value;
   completeForm.distance = getMeters(distanceUnits, distance);
   completeForm.time = getTotalSeconds(hours, minutes, seconds)
   alert(JSON.stringify(completeForm))
+  //sendData();
 })
+
+
+function sendData(e) {
+  if (!e) {
+    throw new Error("Please go the Run menu and choose Initialize")
+  }
+  try {
+    let response = UrlFetchApp.fetch(url, options)
+    Logger.log(JSON.stringify(response));
+  }
+  catch (error) {
+    Logger.log(error.toString());
+  }
+}
 /*
 function get_action(xxx) {
   let v = grecaptcha.getResponse();
