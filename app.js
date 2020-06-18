@@ -11,11 +11,9 @@ if (mm < 10) {
 }
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("activity-date").setAttribute("max", today);
-
 // assign remaining vars from input fields
 let email = document.getElementById('email')
 let emailVarify = document.getElementById('email-varify')
-// let emailToTest = String(email.value.trim().toLowerCase());
 let bibNum = document.getElementById('bib-no')
 let activityDate = document.getElementById('activity-date')
 let distanceUnits = document.getElementById('distance-units')
@@ -24,38 +22,29 @@ let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
 let seconds = document.getElementById('seconds')
 let confirmButton = document.getElementById('submit-button-final')
-let response = UrlFetchApp.fetch(url, options)
+//let response = UrlFetchApp.fetch(url, options)
 let url =
 "https://pqd70u9ypa.execute-api.us-west-2.amazonaws.com/v2/distributed-events/f82a6b4c-a51b-11ea-b618-00184de9375b/activities"
 let completeForm = {
-  timestamp: Date(time)
+  //timestamp: Date(time)
 }
 let options = {
   method: "post",
   contentType: "application/json",
   payload: JSON.stringify(completeForm),
   muteHttpExceptions: false,
-};
+}; 
 // checks if activity time greater than 10 hrs 
 hours.addEventListener('input', () => {
   if(hours.value > 10) {
     window.confirm(`Are you sure you meant to enter ${hours.value} hours for your run time?`)
   }
-})
+});
 emailVarify.addEventListener('blur', () => {
   if(email.value.trim() !== emailVarify.value.trim()) {
     alert('Please make sure e-mail addresses match')
   }
-})
-// checks if email is valid, broken right now 
-/* function validateEmail(emailToTest) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(emailToTest)) {
-    } else {
-      alert("Please enter a valid e-mail address")
-    }
- } */
-
+});
 // convert to meters
 function getMeters(distanceUnits, distance) {
   distance = distance.value.trim()
@@ -66,8 +55,7 @@ function getMeters(distanceUnits, distance) {
   } else {
     return distance * 1609.34
   }
-}
-
+};
 // return total seconds 
 function getTotalSeconds(hours, minutes, seconds) {
   let totalSeconds = 
@@ -105,7 +93,7 @@ window.onclick = function(event) {
 }
 // create JSON and send to S3
 confirmButton.addEventListener('click', e => {
-  completeForm.email = String(email.value.trim();
+  completeForm.email = email.value.trim();
   completeForm.bibNum = parseFloat(bibNum.value.trim());
   completeForm.activityDate = activityDate.value;
   completeForm.distance = getMeters(distanceUnits, distance);
@@ -113,8 +101,7 @@ confirmButton.addEventListener('click', e => {
   alert(JSON.stringify(completeForm))
   //sendData();
 })
-
-
+/*
 function sendData(e) {
   if (!e) {
     throw new Error("Please go the Run menu and choose Initialize")
@@ -126,19 +113,5 @@ function sendData(e) {
   catch (error) {
     Logger.log(error.toString());
   }
-}
-/*
-function get_action(xxx) {
-  let v = grecaptcha.getResponse();
-  if (v.length == 0) {
-    document.getElementById('captcha').innerHTML = "You can't leave Captcha Code empty";
-    return false;
-  }
-  else {
-    document.getElementById('captcha').innerHTML = "Captcha completed";
-    return true; 
-    // find way other than innerHTML to set? 
-  }
-}
-function getActivtyTime(hours, minuts, seconds) {
-} */ 
+} 
+*/
