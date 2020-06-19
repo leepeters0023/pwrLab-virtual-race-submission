@@ -23,18 +23,11 @@ let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
 let seconds = document.getElementById('seconds')
 let confirmButton = document.getElementById('submit-button-final')
-
-let url =
-"https://fyyfi6211e.execute-api.us-west-2.amazonaws.com/v2/distributed-events/8ad2bcf4-ef28-45d3-9610-7c8c53d2b95a/activities"
+// initialize form with timestamp 
 let completeForm = {
   timestamp: Date(time)
 }
-let options = {
-  method: "post",
-  contentType: "application/json",
-  payload: JSON.stringify(completeForm),
-  muteHttpExceptions: false,
-}; 
+
 // checks if activity time greater than 10 hrs 
 hours.addEventListener('input', () => {
   if(hours.value > 10) {
@@ -104,15 +97,11 @@ confirmButton.addEventListener('click', e => {
 })
 
 function sendData(e) {
-  let response = fetch(url, options)
-  if (!e) {
-    throw new Error("Please go the Run menu and choose Initialize")
-  }
-  try {
-    let response = UrlFetchApp.fetch(url, options)
-    console.log(JSON.stringify(response));
-  }
-  catch (error) {
-    console.log(error.toString());
-  }
+  $.ajax({
+    type: "POST",
+    url: '"https://fyyfi6211e.execute-api.us-west-2.amazonaws.com/v2/distributed-events/8ad2bcf4-ef28-45d3-9610-7c8c53d2b95a/activities"',
+    data: JSON.stringify(completeForm),
+    success: alert('data sent'),
+    dataType: 'string'
+  });
 } 
