@@ -12,6 +12,7 @@ if (mm < 10) {
 today = yyyy + "-" + mm + "-" + dd;
 document.getElementById("activity-date").setAttribute("max", today);
 // assign remaining vars from input fields
+let time; 
 let email = document.getElementById('email')
 let emailVarify = document.getElementById('email-varify')
 let bibNum = document.getElementById('bib-no')
@@ -22,9 +23,9 @@ let hours = document.getElementById('hours')
 let minutes = document.getElementById('minutes')
 let seconds = document.getElementById('seconds')
 let confirmButton = document.getElementById('submit-button-final')
-let response = UrlFetchApp.fetch(url, options)
+
 let url =
-"https://pqd70u9ypa.execute-api.us-west-2.amazonaws.com/v2/distributed-events/f82a6b4c-a51b-11ea-b618-00184de9375b/activities"
+"https://fyyfi6211e.execute-api.us-west-2.amazonaws.com/v2/distributed-events/8ad2bcf4-ef28-45d3-9610-7c8c53d2b95a/activities"
 let completeForm = {
   timestamp: Date(time)
 }
@@ -103,14 +104,15 @@ confirmButton.addEventListener('click', e => {
 })
 
 function sendData(e) {
+  let response = fetch(url, options)
   if (!e) {
     throw new Error("Please go the Run menu and choose Initialize")
   }
   try {
     let response = UrlFetchApp.fetch(url, options)
-    Logger.log(JSON.stringify(response));
+    console.log(JSON.stringify(response));
   }
   catch (error) {
-    Logger.log(error.toString());
+    console.log(error.toString());
   }
 } 
