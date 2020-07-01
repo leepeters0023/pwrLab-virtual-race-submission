@@ -93,15 +93,6 @@ confirmButton.addEventListener('click', e => {
   completeForm.distance = getMeters(distanceUnits, distance);
   completeForm.time = getTotalSeconds(hours, minutes, seconds)
   alert(JSON.stringify(completeForm))
-  sendData();
 })
 
-function sendData() {
-  $.ajax({
-    type: "POST",
-    url: '"https://fyyfi6211e.execute-api.us-west-2.amazonaws.com/v2/distributed-events/8ad2bcf4-ef28-45d3-9610-7c8c53d2b95a/activities"',
-    data: JSON.stringify(completeForm),
-    success: alert('data sent'),
-    dataType: 'string'
-  });
-} 
+
